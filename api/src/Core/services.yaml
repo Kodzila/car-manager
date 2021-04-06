@@ -1,9 +1,7 @@
-imports:
-    - { resource: '../src/Core/services.yaml' }
-
-parameters:
-
 services:
     _defaults:
         autowire: true
         autoconfigure: true
+
+    Kodzila\Core\Presentation\:
+        resource: './Presentation/*'

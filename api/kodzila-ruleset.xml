@@ -14,7 +14,9 @@
     <arg name="extensions" value="php"/>
 
     <!-- Import base PSR12 -->
-    <rule ref="PSR12"/>
+    <rule ref="PSR12">
+        <exclude name="PSR1.Files.SideEffects"/>
+    </rule>
 
 
     <!-- Import Squiz rules -->
@@ -125,11 +127,11 @@
     <rule ref="SlevomatCodingStandard.Functions.TrailingCommaInCall" />
 
     <!-- Forbid unused use statements -->
-    <rule ref="SlevomatCodingStandard.Namespaces.UnusedUses">
-        <properties>
-            <property name="searchAnnotations" value="true"/>
-        </properties>
-    </rule>
+<!--    <rule ref="SlevomatCodingStandard.Namespaces.UnusedUses">-->
+<!--        <properties>-->
+<!--            <property name="searchAnnotations" value="true"/>-->
+<!--        </properties>-->
+<!--    </rule>-->
 
     <!-- Prefer assertions over type hints as it provides more type security -->
     <rule ref="SlevomatCodingStandard.PHP.RequireExplicitAssertion" />
