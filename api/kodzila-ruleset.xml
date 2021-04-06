@@ -1,0 +1,168 @@
+<?xml version="1.0"?>
+
+<ruleset
+        name="Kodzila"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="vendor/squizlabs/php_codesniffer/phpcs.xsd"
+>
+    <description>The Linkfactory coding standard.</description>
+    <config name="installed_paths" value="vendor/slevomat/coding-standard"/>
+
+    <arg name="basepath" value="."/>
+    <arg name="cache" value=".phpcs-cache"/>
+    <arg name="colors"/>
+    <arg name="extensions" value="php"/>
+
+    <!-- Import base PSR12 -->
+    <rule ref="PSR12"/>
+
+
+    <!-- Import Squiz rules -->
+    <rule ref="Squiz.NamingConventions.ValidVariableName">
+        <exclude name="Squiz.NamingConventions.ValidVariableName.PrivateNoUnderscore"/>
+    </rule>
+
+
+    <!-- Import PSR2 rules -->
+    <rule ref="PSR2.Namespaces.NamespaceDeclaration" />
+    <rule ref="PSR2.Namespaces.UseDeclaration" />
+
+
+    <!-- Import Generic rules   -->
+    <!-- Forbid deprecated functions -->
+    <rule ref="Generic.PHP.DeprecatedFunctions"/>
+    <!-- Forbid `array(...)` -->
+    <rule ref="Generic.Arrays.DisallowLongArraySyntax"/>
+
+    <rule ref="Generic.NamingConventions.ConstructorName" />
+    <rule ref="Generic.NamingConventions.UpperCaseConstantName" />
+    <rule ref="Generic.PHP.DeprecatedFunctions" />
+    <rule ref="Generic.PHP.DisallowShortOpenTag" />
+    <rule ref="Generic.PHP.LowerCaseKeyword" />
+    <rule ref="Generic.WhiteSpace.DisallowTabIndent" />
+    <rule ref="Generic.Functions.FunctionCallArgumentSpacing" />
+    <!-- Forbid alias functions, i.e. `sizeof()`, `delete()` -->
+    <rule ref="Generic.PHP.ForbiddenFunctions">
+        <properties>
+            <property name="forbiddenFunctions" type="array">
+                <element key="chop" value="rtrim"/>
+                <element key="close" value="closedir"/>
+                <element key="compact" value="null"/>
+                <element key="delete" value="unset"/>
+                <element key="doubleval" value="floatval"/>
+                <element key="extract" value="null"/>
+                <element key="fputs" value="fwrite"/>
+                <element key="ini_alter" value="ini_set"/>
+                <element key="is_double" value="is_float"/>
+                <element key="is_integer" value="is_int"/>
+                <element key="is_long" value="is_int"/>
+                <element key="is_null" value="null"/>
+                <element key="is_real" value="is_float"/>
+                <element key="is_writeable" value="is_writable"/>
+                <element key="join" value="implode"/>
+                <element key="key_exists" value="array_key_exists"/>
+                <element key="pos" value="current"/>
+                <element key="settype" value="null"/>
+                <element key="show_source" value="highlight_file"/>
+                <element key="sizeof" value="count"/>
+                <element key="strchr" value="strstr"/>
+            </property>
+        </properties>
+    </rule>
+    <rule ref="Generic.Formatting.SpaceAfterCast" />
+
+
+    <!-- Import SlevomatCodingStandard rules -->
+    <rule ref="SlevomatCodingStandard.Arrays.TrailingArrayComma" />
+
+    <!-- Require one blank line between methods   -->
+    <rule ref="SlevomatCodingStandard.Classes.MethodSpacing" />
+    <!-- If its possible - require one line methods -->
+    <rule ref="SlevomatCodingStandard.Classes.RequireSingleLineMethodSignature" />
+    <!--Order of properties, methods etc, based on visibility-->
+    <rule ref="SlevomatCodingStandard.Classes.ClassStructure">
+        <properties>
+            <property name="groups" type="array">
+                <element value="uses"/>
+
+                <!-- Public constants are first but you don't care about the order of protected or private constants -->
+                <element value="public constants"/>
+                <element value="constants"/>
+
+                <element value="static properties"/>
+
+                <!-- You don't care about the order among the properties. The same can be done with "properties" shortcut -->
+                <element value="properties"/>
+
+                <element value="constructor"/>
+                <element value="static constructors"/>
+
+                <element value="public static methods"/>
+                <element value="protected static methods"/>
+                <element value="private static methods"/>
+                <element value="static methods"/>
+
+                <element value="all public methods"/>
+                <!-- Magic methods are all public -->
+                <element value="magic methods"/>
+                <element value="all protected methods"/>
+                <element value="all private methods"/>
+                <element value="methods"/>
+            </property>
+        </properties>
+    </rule>
+
+    <!-- Forbid useless phpDocs for functions -->
+    <rule ref="SlevomatCodingStandard.Commenting.UselessFunctionDocComment" />
+
+    <!-- Require new lines between control structures -->
+    <rule ref="SlevomatCodingStandard.ControlStructures.BlockControlStructureSpacing" />
+    <!-- Format ternary operators in cohesive manner -->
+    <rule ref="SlevomatCodingStandard.ControlStructures.RequireMultiLineTernaryOperator" />
+    <!-- Require usage of early exit -->
+    <rule ref="SlevomatCodingStandard.ControlStructures.EarlyExit"/>
+
+    <rule ref="SlevomatCodingStandard.Functions.TrailingCommaInCall" />
+
+    <!-- Forbid unused use statements -->
+    <rule ref="SlevomatCodingStandard.Namespaces.UnusedUses">
+        <properties>
+            <property name="searchAnnotations" value="true"/>
+        </properties>
+    </rule>
+
+    <!-- Prefer assertions over type hints as it provides more type security -->
+    <rule ref="SlevomatCodingStandard.PHP.RequireExplicitAssertion" />
+    <!-- Forbid useless semicolon `;` -->
+    <rule ref="SlevomatCodingStandard.PHP.UselessSemicolon"/>
+    <!-- Forbid weak comparisons -->
+    <rule ref="SlevomatCodingStandard.Operators.DisallowEqualOperators"/>
+    <!-- Forbid useless comments -->
+    <rule ref="SlevomatCodingStandard.Commenting.ForbiddenComments">
+        <properties>
+            <property name="forbiddenCommentPatterns" type="array">
+                <element value="~^(?:(?!private|protected|static)\S+ )?(?:con|de)structor\.\z~i"/>
+                <element value="~^Created by .+\.\z~i"/>
+                <element value="~^(User|Date|Time): \S+\z~i"/>
+                <element value="~^\S+ [gs]etter\.\z~i"/>
+                <element value="~^(Class|Interface|Trait) \S+\z~i"/>
+            </property>
+        </properties>
+    </rule>
+
+    <!-- Require presence of declare(strict_types=1) -->
+    <rule ref="SlevomatCodingStandard.TypeHints.DeclareStrictTypes">
+        <properties>
+            <property name="newlinesCountBetweenOpenTagAndDeclare" value="2" />
+            <property name="spacesCountAroundEqualsSign" value="0" />
+        </properties>
+    </rule>
+    <rule ref="SlevomatCodingStandard.TypeHints.LongTypeHints" />
+    <rule ref="SlevomatCodingStandard.TypeHints.NullableTypeForNullDefaultValue" />
+    <rule ref="SlevomatCodingStandard.TypeHints.ParameterTypeHintSpacing" />
+    <rule ref="SlevomatCodingStandard.TypeHints.PropertyTypeHint" />
+    <rule ref="SlevomatCodingStandard.TypeHints.ReturnTypeHint" />
+    <rule ref="SlevomatCodingStandard.TypeHints.ReturnTypeHintSpacing" />
+    <!-- Disallow mixed type hint as it doesnt allow Psalm to show full potential. We should always know types  -->
+    <rule ref="SlevomatCodingStandard.TypeHints.DisallowMixedTypeHint" />
+</ruleset>
