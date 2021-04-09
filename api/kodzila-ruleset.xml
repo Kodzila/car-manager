@@ -79,8 +79,6 @@
 
     <!-- Require one blank line between methods   -->
     <rule ref="SlevomatCodingStandard.Classes.MethodSpacing" />
-    <!-- If its possible - require one line methods -->
-    <rule ref="SlevomatCodingStandard.Classes.RequireSingleLineMethodSignature" />
     <!--Order of properties, methods etc, based on visibility-->
     <rule ref="SlevomatCodingStandard.Classes.ClassStructure">
         <properties>
