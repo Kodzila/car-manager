@@ -9,7 +9,10 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidInterface;
 
-#[ApiResource]
+#[ApiResource(
+    collectionOperations: ['get'],
+    itemOperations: ['get'],
+)]
 /**
  * @ORM\Entity
  */
@@ -30,5 +33,15 @@ class CarPart
     {
         $this->id = Uuid::uuid4();
         $this->name = $name;
+    }
+
+    public function getId(): UuidInterface
+    {
+        return $this->id;
+    }
+
+    public function getName(): string
+    {
+        return $this->name;
     }
 }
