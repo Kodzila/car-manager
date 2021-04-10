@@ -12,15 +12,14 @@ use Symfony\Component\Dotenv\Dotenv;
 
 abstract class BaseApiTest extends ApiTestCase
 {
+    protected ApiClient $apiClient;
     protected UserOperation $userOperation;
-    protected TokenOperation $tokenOperation;
 
     public function setUp(): void
     {
         parent::setUp();
-        $client = new ApiClient(static::createClient($this->loadDotEnvOptions()));
-        $this->userOperation = new UserOperation($client);
-        $this->tokenOperation = new TokenOperation($client);
+        $this->apiClient = new ApiClient(static::createClient($this->loadDotEnvOptions()));
+        $this->userOperation = new UserOperation($this->apiClient);
     }
 
     /**

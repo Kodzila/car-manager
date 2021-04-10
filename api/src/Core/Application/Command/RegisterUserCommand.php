@@ -13,11 +13,13 @@ use ApiPlatform\Core\Annotation\ApiResource;
     collectionOperations: [
         'POST' => [
             'messenger' => true,
-            'output' => false,
             'status' => 202,
             'path' => '/users/register',
             'openapi_context' => [
                 'tags' => ['User'],
+            ],
+            'normalization_context' => [
+                'groups' => ['user:read'],
             ],
         ],
     ],

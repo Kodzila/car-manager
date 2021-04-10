@@ -19,7 +19,7 @@ final class RegisterUserHandler
     ) {
     }
 
-    public function __invoke(RegisterUserCommand $command): void
+    public function __invoke(RegisterUserCommand $command): User
     {
         $user = User::create(
             $this->userPasswordEncoder,
@@ -29,5 +29,7 @@ final class RegisterUserHandler
         );
 
         $this->entityManager->persist($user);
+
+        return $user;
     }
 }

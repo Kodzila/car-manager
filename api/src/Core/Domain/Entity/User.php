@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Kodzila\Core\Domain\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use DateTimeImmutable;
 use Doctrine\ORM\Mapping as ORM;
 use Kodzila\Core\Domain\Policy\UserUniquenessPolicy;
@@ -11,8 +12,20 @@ use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Webmozart\Assert\Assert;
 
+#[ApiResource(
+    collectionOperations: [],
+    itemOperations: [
+        'GET' => [
+            'normalization_context' => [
+                'groups' => ['user:read'],
+            ],
+            'security' => 'object === user',
+        ],
+    ],
+)]
 /**
  * @ORM\Entity
  */
@@ -25,6 +38,7 @@ final class User implements UserInterface
     private UuidInterface $id;
 
     /**
+     * @Groups({"user:read"})
      * @ORM\Column(type="string", length=255, unique=true)
      */
     private string $email;
@@ -35,6 +49,7 @@ final class User implements UserInterface
     private string $password;
 
     /**
+     * @Groups({"user:read"})
      * @ORM\Column(type="datetime_immutable")
      */
     private DateTimeImmutable $createdAt;
@@ -89,8 +104,18 @@ final class User implements UserInterface
     {
     }
 
+    public function getId(): UuidInterface
+    {
+        return $this->id;
+    }
+
     public function getEmail(): string
     {
         return $this->email;
+    }
+
+    public function getCreatedAt(): DateTimeImmutable
+    {
+        return $this->createdAt;
     }
 }

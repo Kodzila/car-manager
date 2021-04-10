@@ -10,10 +10,12 @@ final class UserTest extends BaseApiTest
 {
     public function test_can_register(): void
     {
-        $email = Random::email();
-        $password = '1qaz2wsx';
+        $userActor = $this->userOperation->register(Random::email(), '1qaz2wsx');
 
-        $this->userOperation->register($email, $password)->assertSuccess();
-        $this->tokenOperation->postToken($email, $password)->assertSuccess(true);
+        // Until login you cannot see your user
+        $this->apiClient->get($userActor->getIri())->assertCode(401);
+
+        $userActor->login();
+        $this->apiClient->get($userActor->getIri())->contentData();
     }
 }
