@@ -8,7 +8,7 @@ final class UserTest extends BaseApiTest
 {
     public function test_can_register(): void
     {
-        $userActor = $this->newUser();
+        $userActor = $this->userOperation->newUser();
 
         // Until login you cannot see your user
         $this->apiClient->get($userActor->getIri())->assertCode(401);
