@@ -16,6 +16,10 @@ use Ramsey\Uuid\UuidInterface;
 #[ApiResource(
     collectionOperations: [
         'POST' => [],
+        'GET_SELF' => [
+            'method' => 'GET',
+            'path' => '/self/actions',
+        ],
     ],
     itemOperations: [
         'GET' => [],

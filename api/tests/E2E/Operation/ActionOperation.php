@@ -35,4 +35,9 @@ final class ActionOperation
             ],
         );
     }
+
+    public function getSelf(): ApiResponse
+    {
+        return $this->apiClient->get('/api/self/actions');
+    }
 }
