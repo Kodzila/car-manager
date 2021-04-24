@@ -25,6 +25,11 @@ final class CarOperation
         );
     }
 
+    public function newCar(UserActor $user): string
+    {
+        return $this->post($user, 'Test car')->contentData()['@id'];
+    }
+
     public function getSelf(): ApiResponse
     {
         return $this->apiClient->get('/api/self/cars');

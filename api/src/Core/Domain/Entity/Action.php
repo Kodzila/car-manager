@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace Kodzila\Core\Domain\Entity;
 
+use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use DateTimeImmutable;
 use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\Uuid;
@@ -25,6 +27,7 @@ use Ramsey\Uuid\UuidInterface;
         'GET' => [],
     ],
 )]
+#[ApiFilter(SearchFilter::class, properties: ['carg' => 'exact'])]
 class Action
 {
     /**

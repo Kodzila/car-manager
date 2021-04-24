@@ -36,8 +36,24 @@ final class ActionOperation
         );
     }
 
-    public function getSelf(): ApiResponse
+    public function newAction(string $carIri, string $carPartIri): string
     {
-        return $this->apiClient->get('/api/self/actions');
+        return $this->post(
+            $carIri,
+            $carPartIri,
+            '24-04-2021',
+            111,
+            'test descr',
+            'test vendor',
+            11111,
+        )->contentData()['@id'];
+    }
+
+    public function getSelf(?string $carIri = null): ApiResponse
+    {
+        $url = '/api/self/actions' . '?';
+        $carIri && $url .= 'car=' . urlencode($carIri);
+
+        return $this->apiClient->get($url);
     }
 }

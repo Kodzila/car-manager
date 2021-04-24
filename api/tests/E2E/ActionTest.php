@@ -59,4 +59,28 @@ final class ActionTest extends BaseApiTest
         $actions = $this->actionOperation->getSelf()->getHydraMembers();
         self::assertCount(1, $actions);
     }
+
+    public function test_can_filter_by_car(): void
+    {
+        $user = $this->userOperation->newUser();
+        $user->login();
+
+        $engineOilIri = $this->carPartOperation->getByName('Engine oil');
+
+        $car1 = $this->carOperation->newCar($user);
+        $car2 = $this->carOperation->newCar($user);
+
+        $this->actionOperation->newAction($car1, $engineOilIri);
+        $this->actionOperation->newAction($car2, $engineOilIri);
+
+        self::assertCount(
+            2,
+            $this->actionOperation->getSelf()->getHydraMembers(),
+        );
+
+        self::assertCount(
+            1,
+            $this->actionOperation->getSelf(carIri: $car1)->getHydraMembers(),
+        );
+    }
 }
