@@ -15,6 +15,9 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Webmozart\Assert\Assert;
 
+/**
+ * @ORM\Entity
+ */
 #[ApiResource(
     collectionOperations: [],
     itemOperations: [
@@ -26,10 +29,7 @@ use Webmozart\Assert\Assert;
         ],
     ],
 )]
-/**
- * @ORM\Entity
- */
-final class User implements UserInterface
+class User implements UserInterface
 {
     /**
      * @ORM\Id

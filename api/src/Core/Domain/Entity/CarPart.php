@@ -9,13 +9,13 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidInterface;
 
+/**
+ * @ORM\Entity
+ */
 #[ApiResource(
     collectionOperations: ['get'],
     itemOperations: ['get'],
 )]
-/**
- * @ORM\Entity
- */
 class CarPart
 {
     /**

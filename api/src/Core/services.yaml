@@ -12,6 +12,9 @@ services:
         tags:
             - { name: messenger.message_handler, bus: command.bus }
 
+    Kodzila\Core\Infrastructure\:
+        resource: './Infrastructure/*'
+
     Kodzila\Core\Presentation\:
         resource: './Presentation/*'
 
