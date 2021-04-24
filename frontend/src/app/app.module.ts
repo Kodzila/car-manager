@@ -7,6 +7,7 @@ import { ContainerPage } from './system/container-page/container-page';
 import { FrontPage } from './system/front-page/front-page';
 import {SystemModule} from "./system/system.module";
 import {AppComponent} from "./app";
+import {LoginPage} from "./system/login-page/login-page";
 
 const APP_ROUTES: Routes = [
     {
@@ -18,6 +19,11 @@ const APP_ROUTES: Routes = [
                 path: '',
                 pathMatch: 'full',
                 component: FrontPage,
+            },
+            {
+                path: 'login',
+                pathMatch: 'full',
+                component: LoginPage,
             },
         ],
     },
