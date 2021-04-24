@@ -7,6 +7,7 @@ import {Toolbar} from './toolbar/toolbar';
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
+import {MatCardModule} from "@angular/material/card";
 
 export const COMPONENTS = [
     ContainerPage,
@@ -25,6 +26,7 @@ export const EXPORTED_COMPONENTS = [];
         MatToolbarModule,
         MatIconModule,
         MatButtonModule,
+        MatCardModule,
     ],
     providers: [],
 })
