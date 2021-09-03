@@ -132,6 +132,9 @@
     "friendsofphp/proxy-manager-lts": {
         "version": "v1.0.3"
     },
+    "kodzila/sniffer": {
+        "version": "1.0.0"
+    },
     "laminas/laminas-code": {
         "version": "4.1.0"
     },
@@ -208,7 +211,7 @@
         "version": "1.13.0"
     },
     "phpstan/phpdoc-parser": {
-        "version": "0.4.9"
+        "version": "0.5.5"
     },
     "phpunit/php-code-coverage": {
         "version": "9.2.6"
@@ -321,19 +324,16 @@
         "version": "3.0.2"
     },
     "slevomat/coding-standard": {
-        "version": "6.4.1"
+        "version": "7.0.14"
     },
     "squizlabs/php_codesniffer": {
-        "version": "3.0",
+        "version": "3.6",
         "recipe": {
             "repo": "github.com/symfony/recipes-contrib",
             "branch": "master",
-            "version": "3.0",
-            "ref": "0dc9cceda799fd3a08b96987e176a261028a3709"
-        },
-        "files": [
-            "phpcs.xml.dist"
-        ]
+            "version": "3.6",
+            "ref": "1019e5c08d4821cb9b77f4891f8e9c31ff20ac6f"
+        }
     },
     "symfony/amqp-messenger": {
         "version": "v5.2.4"

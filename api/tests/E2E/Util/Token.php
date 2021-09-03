@@ -9,8 +9,6 @@ namespace Kodzila\Tests\E2E\Util;
  */
 final class Token
 {
-    public function __construct(
-        public string $token,
-    ) {
-    }
+    public function __construct(public string $token)
+    {}
 }

@@ -8,7 +8,6 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Extension\QueryCollectionExtensionInter
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Util\QueryNameGeneratorInterface;
 use Doctrine\ORM\QueryBuilder;
 use Kodzila\Core\Domain\Entity\Action;
-use Kodzila\Core\Domain\Entity\Car;
 use Kodzila\Core\Domain\Entity\User;
 use Symfony\Component\Security\Core\Security;
 use Webmozart\Assert\Assert;
