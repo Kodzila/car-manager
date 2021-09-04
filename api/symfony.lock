@@ -132,6 +132,9 @@
     "friendsofphp/proxy-manager-lts": {
         "version": "v1.0.3"
     },
+    "kodzila/architecture-validator": {
+        "version": "0.1.0"
+    },
     "kodzila/sniffer": {
         "version": "1.0.0"
     },

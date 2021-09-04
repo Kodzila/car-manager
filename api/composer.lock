@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bfbe5d19cf04ac804c148e3d2e61c593",
+    "content-hash": "f524c7b1138457fd5f706b908657c511",
     "packages": [
         {
             "name": "api-platform/core",
@@ -8162,6 +8162,49 @@
                 "source": "https://github.com/felixfbecker/php-language-server-protocol/tree/1.5.1"
             },
             "time": "2021-02-22T14:02:09+00:00"
+        },
+        {
+            "name": "kodzila/architecture-validator",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Kodzila/architecture-validator.git",
+                "reference": "293a4f6da4c41c2cca3e0e1c2cbeffb8781dc4eb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Kodzila/architecture-validator/zipball/293a4f6da4c41c2cca3e0e1c2cbeffb8781dc4eb",
+                "reference": "293a4f6da4c41c2cca3e0e1c2cbeffb8781dc4eb",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.4 | ^8.0",
+                "symfony/finder": "4.* || 5.*"
+            },
+            "require-dev": {
+                "kodzila/sniffer": "^1.0",
+                "phpunit/phpunit": "9.*",
+                "vimeo/psalm": "4.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Kodzila\\ArchValidator\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Pawel Kozik",
+                    "email": "pawel.artur.kozik@gmail.com"
+                }
+            ],
+            "description": "Library for validating PHP projects architecture.",
+            "support": {
+                "issues": "https://github.com/Kodzila/architecture-validator/issues",
+                "source": "https://github.com/Kodzila/architecture-validator/tree/0.1.0"
+            },
+            "time": "2021-09-04T12:02:52+00:00"
         },
         {
             "name": "kodzila/sniffer",
